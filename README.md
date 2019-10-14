@@ -3,5 +3,5 @@ MinskLandmarks - приложение под ОС Android, позволяюще�
 Язык реализации: Java
 
 **Содержание**  
-1 [Документация](../../Documentation)  
+1 [Документация](Documentation)  
 1.1 [Требования](Documentation/Requirements/Requirements%20Document.md)
