@@ -11,6 +11,13 @@
 1.2.5 [Поиск достопримечательности по названию](#search_landmarks_by_name)  
 1.2.6 [Избранное](#favorites)  
 1.2.7 [Справочная информация](#info)  
+2 [Диаграммы активностей](#activity)     
+2.1 [Просмотр достопримечательностей](#landmarks_list_activity)  
+2.2 [Просмотр информации о достопримечательности](#landmark_info_activity)  
+2.3 [Просмотр карты](#landmarks_map_activity)  
+2.4 [Поиск достопримечательности по названию](#search_landmarks_by_name_activity)  
+2.5 [Избранное](#favorites_activity)  
+2.6 [Справочная информация](#info_activity)  
 
 <a name="useCase"/>
 
@@ -114,3 +121,48 @@
 1.  Пользователь нажимает на иконку "Назад".
 2.  Открывается окно ["Просмотра достопримечательностей"](#landmarks_list).
 3.  Конец.
+
+
+
+<a name="activity"/>
+
+# 2 Диаграммы активностей
+
+<a name="landmarks_list_activity"/>
+
+### 2.1 Просмотр достопримечательностей
+При открытии приложения пользователь видит стартовое окно, на котором отображается список достопримечательностей, иконки "Поиск", "Избранное", "Карта", "Справочная информация".  
+
+![](../../Documentation/Diagrams/Activities/LandmarksActivities.png)
+
+<a name="landmark_info_activity"/>
+
+### 2.2 Просмотр информации о достопримечательности
+При нажатии на достопримечательность, открывается окно просмотра информации о достопримечательности. Посльзователю предоставляется возможность добавления текущей достопримеательности в Избранное, просмотр маршрута, возврата в предыдущее окно, при нажатии на иконку "Назад".
+
+![](../../Documentation/Diagrams/Activities/LandmarkInfoActivity.png)
+
+<a name="landmarks_map_activity"/>
+
+### 2.3 Просмотр карты
+При нажатии на координаты в окне просмотра информации о достопримечательности/ на иконку "Карта", открывается окно с картой. В данном окне пользователь может просмотреть маршрут/ просмотреть все достопримечательности на карте соответственно.
+
+![](../../Documentation/Diagrams/Activities/MapViewActivity.png)
+
+<a name="search_landmarks_by_name_activity"/>
+
+### 2.4 Поиск достопримечательности по названию
+При нажатии на иконку 
+
+![](../../Documentation/Diagrams/Activities/SearchActivity.png)
+
+<a name="favorites_activity"/>
+
+### 2.5 Избранное
+![](../../Documentation/Diagrams/Activities/FavoritesActivity.png)
+
+<a name="info_activity"/>
+
+### 2.6 Справочная информация
+
+![](../../Documentation/Diagrams/Activities/AppInfoActivity.png)
