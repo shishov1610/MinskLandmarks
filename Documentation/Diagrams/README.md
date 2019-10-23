@@ -15,7 +15,7 @@
 <a name="useCase"/>
 
 # 1 Диаграмма прецедентов
-Диаграмма прецедентов имее следующий вид:
+Диаграмма прецедентов имее следующий вид:  
 ![](../../Documentation/Diagrams/UseCase/useCase.png)
 
 <a name="actors"/>
