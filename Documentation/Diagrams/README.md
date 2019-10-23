@@ -16,7 +16,7 @@
 
 # 1 Диаграмма прецедентов
 Диаграмма прецедентов имее следующий вид:
-![](../../Documentation/Diagrams/UseCase/useCase.png)
+(../../Documentation/Diagrams/UseCase/useCase.png)
 
 <a name="actors"/>
 
