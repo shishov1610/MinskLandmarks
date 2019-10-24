@@ -18,6 +18,13 @@
 2.4 [Поиск достопримечательности по названию](#search_landmarks_by_name_activity)  
 2.5 [Избранное](#favorites_activity)  
 2.6 [Справочная информация](#info_activity)  
+3 [Диаграммы последовательностей](#sequence)     
+3.1 [Просмотр достопримечательностей](#landmarks_list_sequence)  
+3.2 [Просмотр информации о достопримечательности](#landmark_info_sequence)  
+3.3 [Просмотр карты](#landmarks_map_sequence)  
+3.4 [Поиск достопримечательности по названию](#search_landmarks_by_name_sequence)  
+3.5 [Избранное](#favorites_sequence)  
+3.6 [Справочная информация](#info_sequence)  
 
 <a name="useCase"/>
 
@@ -152,17 +159,54 @@
 <a name="search_landmarks_by_name_activity"/>
 
 ### 2.4 Поиск достопримечательности по названию
-При нажатии на иконку 
+При нажатии на иконку "Поиск", открывается окно поиска. После полного либо частичного ввода названия, отображается список достопримечательностей.
 
 ![](../../Documentation/Diagrams/Activities/SearchActivity.png)
 
 <a name="favorites_activity"/>
 
 ### 2.5 Избранное
+При нажатии на иконку "Избранное", открывается окно избранных достопримечательностей.
+
 ![](../../Documentation/Diagrams/Activities/FavoritesActivity.png)
 
 <a name="info_activity"/>
 
 ### 2.6 Справочная информация
+При нажатии на иконку "Справочная информация", открывается окно справочной информации, в котором отображена основная информация о приложении.
 
 ![](../../Documentation/Diagrams/Activities/AppInfoActivity.png)
+
+<a name="sequence"/>
+
+# 3 Диаграммы последовательностей
+
+<a name="landmarks_list_sequence"/>
+
+### 3.1 Просмотр достопримечательностей
+![](../../Documentation/Diagrams/Sequence/landmarksSequence.png)
+
+<a name="landmark_info_sequence"/>
+
+### 3.2 Просмотр информации о достопримечательности
+![](../../Documentation/Diagrams/Sequence/landmarkInfoSequence.png)
+
+<a name="landmarks_map_sequence"/>
+
+### 3.3 Просмотр карты
+![](../../Documentation/Diagrams/Sequence/MapViewSequence.png)
+
+<a name="search_landmarks_by_name_sequence"/>
+
+### 3.4 Поиск достопримечательности по названию
+![](../../Documentation/Diagrams/Sequence/SearchSequence.png)
+
+<a name="favorites_sequence"/>
+
+### 3.5 Избранное
+![](../../Documentation/Diagrams/Sequence/FavoritesSequence.png)
+
+<a name="info_sequence"/>
+
+### 3.6 Справочная информация
+![](../../Documentation/Diagrams/Sequence/AppInfoSequence.png)
