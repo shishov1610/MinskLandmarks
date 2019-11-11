@@ -25,6 +25,13 @@
 3.4 [Поиск достопримечательности по названию](#search_landmarks_by_name_sequence)  
 3.5 [Избранное](#favorites_sequence)  
 3.6 [Справочная информация](#info_sequence)  
+4 [Диаграммы состояния](#state)  
+4.1 [Просмотр достопримечательностей](#landmarksViewState)  
+4.2 [Просмотр карты с маршрутом](#routeState)  
+4.3 [Поиск достопримечательности](#searchState)  
+5 [Диаграмма классов](#classDiagram)  
+6 [Диаграмма развертывания](#deployment)  
+
 
 <a name="useCase"/>
 
@@ -137,42 +144,42 @@
 
 <a name="landmarks_list_activity"/>
 
-### 2.1 Просмотр достопримечательностей
+## 2.1 Просмотр достопримечательностей
 При открытии приложения пользователь видит стартовое окно, на котором отображается список достопримечательностей, иконки "Поиск", "Избранное", "Карта", "Справочная информация".  
 
 ![](../../Documentation/Diagrams/Activities/LandmarksActivities.png)
 
 <a name="landmark_info_activity"/>
 
-### 2.2 Просмотр информации о достопримечательности
+## 2.2 Просмотр информации о достопримечательности
 При нажатии на достопримечательность, открывается окно просмотра информации о достопримечательности. Посльзователю предоставляется возможность добавления текущей достопримеательности в Избранное, просмотр маршрута, возврата в предыдущее окно, при нажатии на иконку "Назад".
 
 ![](../../Documentation/Diagrams/Activities/LandmarkInfoActivity.png)
 
 <a name="landmarks_map_activity"/>
 
-### 2.3 Просмотр карты
+## 2.3 Просмотр карты
 При нажатии на координаты в окне просмотра информации о достопримечательности/ на иконку "Карта", открывается окно с картой. В данном окне пользователь может просмотреть маршрут/ просмотреть все достопримечательности на карте соответственно.
 
 ![](../../Documentation/Diagrams/Activities/MapViewActivity.png)
 
 <a name="search_landmarks_by_name_activity"/>
 
-### 2.4 Поиск достопримечательности по названию
+## 2.4 Поиск достопримечательности по названию
 При нажатии на иконку "Поиск", открывается окно поиска. После полного либо частичного ввода названия, отображается список достопримечательностей.
 
 ![](../../Documentation/Diagrams/Activities/SearchActivity.png)
 
 <a name="favorites_activity"/>
 
-### 2.5 Избранное
+## 2.5 Избранное
 При нажатии на иконку "Избранное", открывается окно избранных достопримечательностей.
 
 ![](../../Documentation/Diagrams/Activities/FavoritesActivity.png)
 
 <a name="info_activity"/>
 
-### 2.6 Справочная информация
+## 2.6 Справочная информация
 При нажатии на иконку "Справочная информация", открывается окно справочной информации, в котором отображена основная информация о приложении.
 
 ![](../../Documentation/Diagrams/Activities/AppInfoActivity.png)
@@ -183,30 +190,63 @@
 
 <a name="landmarks_list_sequence"/>
 
-### 3.1 Просмотр достопримечательностей
+## 3.1 Просмотр достопримечательностей
 ![](../../Documentation/Diagrams/Sequence/landmarksSequence.png)
 
 <a name="landmark_info_sequence"/>
 
-### 3.2 Просмотр информации о достопримечательности
+## 3.2 Просмотр информации о достопримечательности
 ![](../../Documentation/Diagrams/Sequence/landmarkInfoSequence.png)
 
 <a name="landmarks_map_sequence"/>
 
-### 3.3 Просмотр карты
+## 3.3 Просмотр карты
 ![](../../Documentation/Diagrams/Sequence/MapViewSequence.png)
 
 <a name="search_landmarks_by_name_sequence"/>
 
-### 3.4 Поиск достопримечательности по названию
+## 3.4 Поиск достопримечательности по названию
 ![](../../Documentation/Diagrams/Sequence/SearchSequence.png)
 
 <a name="favorites_sequence"/>
 
-### 3.5 Избранное
+## 3.5 Избранное
 ![](../../Documentation/Diagrams/Sequence/FavoritesSequence.png)
 
 <a name="info_sequence"/>
 
-### 3.6 Справочная информация
+## 3.6 Справочная информация
 ![](../../Documentation/Diagrams/Sequence/AppInfoSequence.png)
+
+<a name="state"/>
+
+# 4 Диаграммы состояния
+
+<a name="landmarksViewState"/>
+
+## 4.1 Просмотр достопримечательностей
+
+![](../../Documentation/Diagrams/State/LandmarkViewStateDiagram.png)
+
+<a name="routeState"/>
+
+## 4.2 Просмотр карты с маршрутом
+
+![](../../Documentation/Diagrams/State/RouteStateDiagram.png)
+
+<a name="searchState"/>
+
+## 4.3 Поиск достопримечательности
+
+![](../../Documentation/Diagrams/State/SearchStateDiagram.png)
+
+<a name="classDiagram"/>
+
+# 5 Диаграмма классов
+
+![](../../Documentation/Diagrams/ClassDiagram/ClassDiagram.png)
+
+<a name="deployment"/>
+
+# 6 Диаграмма развертывания
+![](../../Documentation/Diagrams/Deployment/DeploymentDiagram.png)
