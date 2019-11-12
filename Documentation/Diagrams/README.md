@@ -30,7 +30,7 @@
 4.2 [Просмотр карты с маршрутом](#routeState)  
 4.3 [Поиск достопримечательности](#searchState)  
 5 [Диаграмма классов](#classDiagram)  
-6 [Диаграмма развертывания](#deployment)  
+6 [Диаграмма компонентов и развертывания](#deployment)  
 
 
 <a name="useCase"/>
@@ -248,5 +248,5 @@
 
 <a name="deployment"/>
 
-# 6 Диаграмма развертывания
+# 6 Диаграмма компонентов и развертывания
 ![](../../Documentation/Diagrams/Deployment/DeploymentDiagram.png)
