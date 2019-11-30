@@ -6,4 +6,5 @@ MinskLandmarks - приложение под ОС Android, позволяюще�
 **Содержание**  
 1  [Документация](Documentation)  
 1.1  [Требования](Documentation/Requirements/Requirements%20Document.md)  
-1.2  [Диаграммы](Documentation/Diagrams/README.md)
+1.2  [Диаграммы](Documentation/Diagrams/README.md)  
+2  [Код программы](Code)  
