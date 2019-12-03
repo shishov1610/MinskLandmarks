@@ -28,25 +28,6 @@
             android:src="?attr/actionModeCloseDrawable"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/landmarkInfoHandle"
-            android:layout_width="330dp"
-            android:layout_height="match_parent"
-            android:clickable="false"
-            android:ellipsize="end"
-            android:fontFamily="serif-monospace"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/landmarks"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            android:visibility="visible"
-            tools:ignore="MissingConstraints"
-            tools:text="Landmarks"
-            tools:visibility="visible" />
-
         <ImageButton
             android:id="@+id/favoritesButton"
             style="@style/Widget.AppCompat.ImageButton"
@@ -58,10 +39,24 @@
             android:src="@android:drawable/btn_star_big_off"
             tools:ignore="MissingConstraints" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+        <TextView
+            android:id="@+id/landmarkInfoHandle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:fontFamily="serif-monospace"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/landmarks"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:visibility="visible"
+            tools:ignore="MissingConstraints"
+            tools:text="Landmarks"
+            tools:visibility="visible" />
 
     </LinearLayout>
 
@@ -88,5 +83,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPic" />
+
+    <ListView
+        android:id="@+id/mainListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHandle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

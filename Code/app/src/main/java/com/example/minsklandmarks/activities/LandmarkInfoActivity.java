@@ -15,6 +15,9 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
     ImageButton backButton;
     ImageButton addToFavorite;
 
+    TextView handle1;
+    ImageView pic;
+    TextView handle2;
 
     boolean flag = false;
 
@@ -28,6 +31,15 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
         addToFavorite = findViewById(R.id.favoritesButton);
         addToFavorite.setOnClickListener(this);
 
+        handle1 = findViewById(R.id.landmarkInfoHandle);
+        handle2 = findViewById(R.id.textViewHandle);
+        pic = findViewById(R.id.imageViewPic);
+
+        Bundle arguments = getIntent().getExtras();
+        String name = arguments.getString("name");
+
+        handle1.setText(name);
+        handle2.setText(name);
 
     }
     public void onClick(View v){
