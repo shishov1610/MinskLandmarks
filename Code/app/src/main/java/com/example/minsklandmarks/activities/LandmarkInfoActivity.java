@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.minsklandmarks.R;
 
@@ -18,6 +19,8 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
     TextView handle1;
     ImageView pic;
     TextView handle2;
+
+    Toast toast;
 
     boolean flag = false;
 
@@ -50,10 +53,14 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
             case R.id.favoritesButton:
                 if (!flag){
                     addToFavorite.setImageResource(android.R.drawable.btn_star_big_on );
+                    toast = Toast.makeText(LandmarkInfoActivity.this, "Добавлено в избранное", Toast.LENGTH_SHORT);
+                    toast.show();
                     flag = true;
                 }
                 else {
                     addToFavorite.setImageResource(android.R.drawable.btn_star_big_off);
+                    toast = Toast.makeText(LandmarkInfoActivity.this, "Удалено из избранного", Toast.LENGTH_SHORT);
+                    toast.show();
                     flag = false;
                 }
                 break;

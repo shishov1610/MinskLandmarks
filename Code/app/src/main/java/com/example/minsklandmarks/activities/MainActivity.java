@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.minsklandmarks.R;
+import com.example.minsklandmarks.databaseService.DatabaseServiceImpl;
 
 import java.util.ArrayList;
 
@@ -39,11 +41,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         aboutAppButton = findViewById(R.id.aboutAppButton);
         aboutAppButton.setOnClickListener(this);
 
-        final ArrayList<String> names = new ArrayList<>();
-        names.add("first");
-        names.add("second");
-        names.add("third dsjnajgnadkjgnaognajngofngznlgnagorn");
-        CustomAdapter customAdapter = new CustomAdapter(names);
+        DatabaseServiceImpl repository = new DatabaseServiceImpl(this);
+        final ArrayList<String> names = repository.getNames();
+        final ArrayList<String> images = repository.getImages();
+
+//        final ArrayList<String> names = new ArrayList<>();
+//        names.add("first");
+//        names.add("second");
+//        names.add("third dsjnajgnadkjgnaognajngofngznlgnagorn");
+
+        CustomAdapter customAdapter = new CustomAdapter(names, images);
         ListView listView = findViewById(R.id.mainListView);
         listView.setAdapter(customAdapter);
 
@@ -86,9 +93,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     class CustomAdapter extends BaseAdapter {
 
         private ArrayList<String> names;
+        private ArrayList<String> images;
 
-        public CustomAdapter(ArrayList<String> names){
+        public CustomAdapter(ArrayList<String> names, ArrayList<String> images){
             this.names = names;
+            this.images = images;
         }
 
         @Override
@@ -110,8 +119,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public View getView(int position, View convertView, ViewGroup parent) {
             convertView = getLayoutInflater().inflate(R.layout.custom_layout, null);
             TextView textView = convertView.findViewById(R.id.textView);
+            ImageView imageView = convertView.findViewById(R.id.imageView);
 
             textView.setText(names.get(position));
+            int imageId = imageView.getResources().getIdentifier(images.get(position).concat("s"),"drawable","com.example.minsklandmarks");
+            imageView.setImageResource(imageId);
             return convertView;
         }
     }
