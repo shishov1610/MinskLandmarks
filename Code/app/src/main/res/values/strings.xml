@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MinskLandmarks</string>
+    <string name="favorities">Favorities</string>
+    <string name="todo" />
+    <string name="landmarks">Landmarks</string>
+    <string name="search">Search</string>
+    <string name="map">Map</string>
+    <string name="about_application">About Application</string>
 </resources>
