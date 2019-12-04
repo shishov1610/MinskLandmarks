@@ -38,6 +38,8 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
     DatabaseConnect dbc;
     DatabaseServiceImpl repository;
     int  id;
+    String name;
+    String image;
 
     int flag;
 
@@ -64,16 +66,16 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
         officialSite = findViewById(R.id.officialSite);
 
         Bundle arguments = getIntent().getExtras();
-        String name = arguments.getString("name");
-        String image = arguments.getString("image");
+        name = arguments.getString("name");
+        image = arguments.getString("image");
         id = arguments.getInt("id");
 
         dbc = DatabaseConnect.getInstance();
         repository = new DatabaseServiceImpl(dbc.getDb());
 
-        flag = repository.isFavorite(id);
+        flag = repository.isFavorite(name);
         if (flag == 0) addToFavorite.setImageResource(android.R.drawable.btn_star_big_off);
-        else addToFavorite.setImageResource(android.R.drawable.btn_star_big_on );
+        else if (flag == 1) addToFavorite.setImageResource(android.R.drawable.btn_star_big_on );
 
         final ArrayList<String> info = repository.getInfo(id);
 
@@ -96,15 +98,16 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
                 this.finish();
                 break;
             case R.id.favoritesButton:
+                flag = repository.isFavorite(name);
                 if (flag == 0){
-                    repository.setFavorite(id, 1);
                     addToFavorite.setImageResource(android.R.drawable.btn_star_big_on );
+                    repository.setFavorite(name, 1);
                     toast = Toast.makeText(LandmarkInfoActivity.this, "Добавлено в избранное", Toast.LENGTH_SHORT);
                     toast.show();
                 }
-                else {
-                    repository.setFavorite(id, 0);
+                else if (flag == 1){
                     addToFavorite.setImageResource(android.R.drawable.btn_star_big_off);
+                    repository.setFavorite(name, 0);
                     toast = Toast.makeText(LandmarkInfoActivity.this, "Удалено из избранного", Toast.LENGTH_SHORT);
                     toast.show();
                 }

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">MinskLandmarks</string>
-    <string name="favorities">Favorities</string>
+    <string name="favorities">Избранное</string>
     <string name="todo" />
-    <string name="landmarks">Landmarks</string>
-    <string name="search">Search</string>
-    <string name="map">Map</string>
-    <string name="about_application">About Application</string>
+    <string name="landmarks">Достопримечательности</string>
+    <string name="search">Поиск</string>
+    <string name="map">Карта</string>
+    <string name="about_application">О приложении</string>
 </resources>

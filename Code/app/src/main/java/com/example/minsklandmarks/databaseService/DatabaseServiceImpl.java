@@ -1,15 +1,9 @@
 package com.example.minsklandmarks.databaseService;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.minsklandmarks.databaseHelper.DatabaseConnect;
-import com.example.minsklandmarks.databaseHelper.DatabaseHelper;
-
-import java.io.IOException;
 
 import java.util.ArrayList;
 
@@ -17,20 +11,6 @@ public class DatabaseServiceImpl implements DatabaseService {
     private SQLiteDatabase db;
     private Cursor cursor;
     public DatabaseServiceImpl(SQLiteDatabase db) {
-//        DatabaseHelper helper = new DatabaseHelper(context);
-//        try{
-//            helper.createDataBase();
-//        } catch (IOException ioex){
-//            throw new Error("Can't initialize DB");
-//        }
-//        try{
-//            helper.openDataBase();
-//        } catch (SQLException sqlex){
-//            throw sqlex;
-//        }
-//        //Подключение к базе данных
-//        DatabaseHelper helper = DatabaseConnect.getDatabaseHelper();
-  //      db = helper.getWritableDatabase();
         this.db = db;
     }
     public ArrayList<String> getNames(){
@@ -76,15 +56,17 @@ public class DatabaseServiceImpl implements DatabaseService {
         cursor.close();
         return list;
     }
-    public void setFavorite(int id, int i){
+    public void setFavorite(String name, int i){
+        int id = getId(name);
         ContentValues cv = new ContentValues();
         cv.put("isFavorites", i);
-        db.update("landmarksInfoDB", cv, "_id = ?", new String[]{ String.valueOf(id+1)});
+        db.update("landmarksInfoDB", cv, "_id = ?", new String[]{ String.valueOf(id)});
     }
-    public int isFavorite(int id){
+    public int isFavorite(String name){
         int flag = 0;
+        int id = getId(name);
         String query = "select isFavorites from landmarksInfoDB where _id = ?";
-        cursor = db.rawQuery(query,new String[]{ String.valueOf(id+1)});
+        cursor = db.rawQuery(query,new String[]{ String.valueOf(id)});
         if (cursor.moveToFirst()) {
             flag = cursor.getInt(cursor.getColumnIndex("isFavorites"));
         }
@@ -126,12 +108,55 @@ public class DatabaseServiceImpl implements DatabaseService {
         cursor.close();
         return list;
     }
+    public ArrayList<String> getSearchNames(String str){
+        String search = "%" + str + "%";
+        ArrayList<String> list = new ArrayList<>();
+        String query = "select l.name from landmarksDB as l where l.name like ?";
+        cursor = db.rawQuery(query,new String[] {search});
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    for (String cn : cursor.getColumnNames()) {
+                        list.add(cursor.getString(cursor.getColumnIndex(cn)));
+                    }
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
+        return list;
+    }
+    public ArrayList<String> getSearchImages(String str){
+        String search = "%" + str + "%";
+        ArrayList<String> list = new ArrayList<>();
+        String query = "select l.image from landmarksDB as l where l.name like ?";
+        cursor = db.rawQuery(query,new String[] {search});
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    for (String cn : cursor.getColumnNames()) {
+                        list.add(cursor.getString(cursor.getColumnIndex(cn)));
+                    }
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
+        return list;
+    }
+    public int getId(String name){
+        int id = 0;
+        String query = "select l._id from landmarksDB as l where l.name = ?";
+        cursor = db.rawQuery(query,new String[] {name});
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                id = cursor.getInt(cursor.getColumnIndex("_id"));
+            }
+        }
+        cursor.close();
+        return id;
+    }
     public ArrayList<String> getAllCoordinates(){
         ArrayList<String> list = new ArrayList<>();
         return list;
     }
-    public ArrayList<String> getAllCoordinates(int i){
-        ArrayList<String> list = new ArrayList<>();
-        return list;
-    }
+
 }
