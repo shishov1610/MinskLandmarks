@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.minsklandmarks.databaseHelper.DatabaseConnect;
 import com.example.minsklandmarks.databaseHelper.DatabaseHelper;
 
 import java.io.IOException;
@@ -14,20 +15,22 @@ import java.util.ArrayList;
 public class DatabaseServiceImpl implements DatabaseService {
     private SQLiteDatabase db;
     private Cursor cursor;
-    public DatabaseServiceImpl(Context context) {
-        DatabaseHelper helper = new DatabaseHelper(context);
-        try{
-            helper.createDataBase();
-        } catch (IOException ioex){
-            throw new Error("Can't initialize DB");
-        }
-        try{
-            helper.openDataBase();
-        } catch (SQLException sqlex){
-            throw sqlex;
-        }
-        //Подключение к базе данных
-        db = helper.getWritableDatabase();
+    public DatabaseServiceImpl(SQLiteDatabase db) {
+//        DatabaseHelper helper = new DatabaseHelper(context);
+//        try{
+//            helper.createDataBase();
+//        } catch (IOException ioex){
+//            throw new Error("Can't initialize DB");
+//        }
+//        try{
+//            helper.openDataBase();
+//        } catch (SQLException sqlex){
+//            throw sqlex;
+//        }
+//        //Подключение к базе данных
+//        DatabaseHelper helper = DatabaseConnect.getDatabaseHelper();
+  //      db = helper.getWritableDatabase();
+        this.db = db;
     }
     public ArrayList<String> getNames(){
         ArrayList<String> list = new ArrayList<>();
@@ -62,6 +65,14 @@ public class DatabaseServiceImpl implements DatabaseService {
     }
     public ArrayList<String> getInfo(int i){
         ArrayList<String> list = new ArrayList<>();
+        String query = "select * from landmarksInfoDB where _id = ?";
+        cursor = db.rawQuery(query,new String[]{ String.valueOf(i+1)});
+        if (cursor.moveToFirst()) {
+            for (int j = 0; j< 8; j++){
+                list.add(cursor.getString(j));
+            }
+        }
+        cursor.close();
         return list;
     }
     public ArrayList<String> getFavorites(){

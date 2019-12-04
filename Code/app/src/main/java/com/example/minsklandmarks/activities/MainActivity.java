@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.minsklandmarks.R;
+import com.example.minsklandmarks.databaseHelper.DatabaseConnect;
 import com.example.minsklandmarks.databaseService.DatabaseServiceImpl;
 
 import java.util.ArrayList;
@@ -41,7 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         aboutAppButton = findViewById(R.id.aboutAppButton);
         aboutAppButton.setOnClickListener(this);
 
-        DatabaseServiceImpl repository = new DatabaseServiceImpl(this);
+        DatabaseConnect dbc = DatabaseConnect.getInstance();
+
+        DatabaseServiceImpl repository = new DatabaseServiceImpl(dbc.getDb());
         final ArrayList<String> names = repository.getNames();
         final ArrayList<String> images = repository.getImages();
 
@@ -60,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent landmarkInfoWindow = new Intent(MainActivity.this, LandmarkInfoActivity.class);
                 landmarkInfoWindow.putExtra("name", names.get(position));
+                landmarkInfoWindow.putExtra("image", images.get(position));
+                landmarkInfoWindow.putExtra("id", position);
                 startActivity(landmarkInfoWindow);
             }
         });
