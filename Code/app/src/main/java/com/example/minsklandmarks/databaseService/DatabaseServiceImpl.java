@@ -1,5 +1,6 @@
 package com.example.minsklandmarks.databaseService;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -63,10 +64,10 @@ public class DatabaseServiceImpl implements DatabaseService {
         cursor.close();
         return list;
     }
-    public ArrayList<String> getInfo(int i){
+    public ArrayList<String> getInfo(int id){
         ArrayList<String> list = new ArrayList<>();
         String query = "select * from landmarksInfoDB where _id = ?";
-        cursor = db.rawQuery(query,new String[]{ String.valueOf(i+1)});
+        cursor = db.rawQuery(query,new String[]{ String.valueOf(id+1)});
         if (cursor.moveToFirst()) {
             for (int j = 0; j< 8; j++){
                 list.add(cursor.getString(j));
@@ -75,8 +76,54 @@ public class DatabaseServiceImpl implements DatabaseService {
         cursor.close();
         return list;
     }
-    public ArrayList<String> getFavorites(){
+    public void setFavorite(int id, int i){
+        ContentValues cv = new ContentValues();
+        cv.put("isFavorites", i);
+        db.update("landmarksInfoDB", cv, "_id = ?", new String[]{ String.valueOf(id+1)});
+    }
+    public int isFavorite(int id){
+        int flag = 0;
+        String query = "select isFavorites from landmarksInfoDB where _id = ?";
+        cursor = db.rawQuery(query,new String[]{ String.valueOf(id+1)});
+        if (cursor.moveToFirst()) {
+            flag = cursor.getInt(cursor.getColumnIndex("isFavorites"));
+        }
+        return flag;
+    }
+    public ArrayList<String> getFavoritesNames(){
         ArrayList<String> list = new ArrayList<>();
+        String query = "select l.name from landmarksDB  as l " +
+                "INNER JOIN landmarksInfoDB as li " +
+                "where li._id = l._id and li.isFavorites = ?";
+        cursor = db.rawQuery(query,new String[]{ String.valueOf(1)});
+        if ((cursor != null) && (cursor.getCount() > 0)) {
+            cursor.moveToFirst();
+            do {
+                for (String cn : cursor.getColumnNames()) {
+                    list.add(cursor.getString(cursor.getColumnIndex(cn)));
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
+
+    public ArrayList<String> getFavoritesImages(){
+        ArrayList<String> list = new ArrayList<>();
+        String query = "select l.image from landmarksDB  as l " +
+                "INNER JOIN landmarksInfoDB as li " +
+                "where li._id = l._id AND li.isFavorites = ?";
+        cursor = db.rawQuery(query,new String[]{ String.valueOf(1)});
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    for (String cn : cursor.getColumnNames()) {
+                        list.add(cursor.getString(cursor.getColumnIndex(cn)));
+                    }
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
         return list;
     }
     public ArrayList<String> getAllCoordinates(){

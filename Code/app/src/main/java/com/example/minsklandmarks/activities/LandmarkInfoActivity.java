@@ -35,7 +35,11 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
 
     Toast toast;
 
-    boolean flag = false;
+    DatabaseConnect dbc;
+    DatabaseServiceImpl repository;
+    int  id;
+
+    int flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +66,15 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
         Bundle arguments = getIntent().getExtras();
         String name = arguments.getString("name");
         String image = arguments.getString("image");
-        int  id = arguments.getInt("id");
+        id = arguments.getInt("id");
 
-        Log.w("MY_TAG", String.valueOf(id));
+        dbc = DatabaseConnect.getInstance();
+        repository = new DatabaseServiceImpl(dbc.getDb());
 
-        DatabaseConnect dbc = DatabaseConnect.getInstance();
-        DatabaseServiceImpl repository = new DatabaseServiceImpl(dbc.getDb());
+        flag = repository.isFavorite(id);
+        if (flag == 0) addToFavorite.setImageResource(android.R.drawable.btn_star_big_off);
+        else addToFavorite.setImageResource(android.R.drawable.btn_star_big_on );
+
         final ArrayList<String> info = repository.getInfo(id);
 
         handle1.setText(name);
@@ -89,17 +96,17 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
                 this.finish();
                 break;
             case R.id.favoritesButton:
-                if (!flag){
+                if (flag == 0){
+                    repository.setFavorite(id, 1);
                     addToFavorite.setImageResource(android.R.drawable.btn_star_big_on );
                     toast = Toast.makeText(LandmarkInfoActivity.this, "Добавлено в избранное", Toast.LENGTH_SHORT);
                     toast.show();
-                    flag = true;
                 }
                 else {
+                    repository.setFavorite(id, 0);
                     addToFavorite.setImageResource(android.R.drawable.btn_star_big_off);
                     toast = Toast.makeText(LandmarkInfoActivity.this, "Удалено из избранного", Toast.LENGTH_SHORT);
                     toast.show();
-                    flag = false;
                 }
                 break;
             case R.id.routeButton:

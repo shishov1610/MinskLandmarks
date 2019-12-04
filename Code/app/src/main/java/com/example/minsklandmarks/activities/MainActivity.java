@@ -49,10 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final ArrayList<String> names = repository.getNames();
         final ArrayList<String> images = repository.getImages();
 
-//        final ArrayList<String> names = new ArrayList<>();
-//        names.add("first");
-//        names.add("second");
-//        names.add("third dsjnajgnadkjgnaognajngofngznlgnagorn");
 
         CustomAdapter customAdapter = new CustomAdapter(names, images);
         ListView listView = findViewById(R.id.mainListView);
