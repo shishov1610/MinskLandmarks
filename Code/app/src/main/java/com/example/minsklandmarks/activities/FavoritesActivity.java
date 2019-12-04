@@ -31,6 +31,13 @@ public class FavoritesActivity extends AppCompatActivity implements View.OnClick
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    protected void onStart () {
+        super.onStart();
+
         DatabaseConnect dbc = DatabaseConnect.getInstance();
         DatabaseServiceImpl repository = new DatabaseServiceImpl(dbc.getDb());
         final ArrayList<String> names = repository.getFavoritesNames();
@@ -52,6 +59,8 @@ public class FavoritesActivity extends AppCompatActivity implements View.OnClick
             }
         });
     }
+
+
     public void onClick(View v){
         switch (v.getId()) {
             case R.id.backButton:

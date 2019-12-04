@@ -48,6 +48,7 @@
             android:fontFamily="serif-monospace"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/landmarks"
+            android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/background_light"
