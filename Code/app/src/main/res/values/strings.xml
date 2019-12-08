@@ -6,4 +6,8 @@
     <string name="search">Поиск</string>
     <string name="map">Карта</string>
     <string name="about_application">О приложении</string>
+    <string name="not_found_error_message">Not found</string>
+    <string name="network_error_message">Network error</string>
+    <string name="remote_error_message">Remote server error</string>
+    <string name="unknown_error_message">Unknown error</string>
 </resources>

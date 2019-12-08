@@ -40,6 +40,7 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
     int  id;
     String name;
     String image;
+    String coordinates;
 
     int flag;
 
@@ -89,7 +90,7 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
         cost.setText(info.get(4));
         telephone.setText(info.get(5));
         officialSite.setText(info.get(6));
-        String coordinates = info.get(7);
+        coordinates = info.get(7);
 
     }
     public void onClick(View v){
@@ -114,6 +115,8 @@ public class LandmarkInfoActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.routeButton:
                 Intent routeWindow = new Intent(this, ViewMapActivity.class);
+                routeWindow.putExtra("key", 1);
+                routeWindow.putExtra("coordinates", coordinates);
                 startActivity(routeWindow);
                 break;
             default:

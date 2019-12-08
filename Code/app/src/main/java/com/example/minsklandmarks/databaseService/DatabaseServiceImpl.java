@@ -156,6 +156,18 @@ public class DatabaseServiceImpl implements DatabaseService {
     }
     public ArrayList<String> getAllCoordinates(){
         ArrayList<String> list = new ArrayList<>();
+        String query = "select coordinates from landmarksInfoDB";
+        cursor = db.rawQuery(query,null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    for (String cn : cursor.getColumnNames()) {
+                        list.add(cursor.getString(cursor.getColumnIndex(cn)));
+                    }
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
         return list;
     }
 
