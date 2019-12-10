@@ -117,7 +117,7 @@
 
 ## Представление результатов
 
-Результаты представлены  в документе ["Результаты тестирования"](Testing/TestResults.md).
+Результаты представлены  в документе ["Результаты тестирования"](https://github.com/shishov1610/MinskLandmarks/Testing/TestResults.md).
 
 <a name="conclusion"/>
 
