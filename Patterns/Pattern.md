@@ -65,4 +65,4 @@ public class MyApp extends Application {
  DatabaseConnect dbc = DatabaseConnect.getInstance();
  ```
 Диаграмма классов:
-![](../../Patterns/SingletonClassDiagram.jpg)
+![](../../Patterns/SingletonClassDiagram.png)
